@@ -117,10 +117,21 @@ code {
 
 button:not(:disabled),
 [role="button"]:not([aria-disabled="true"]),
+[role="tab"],
+[role="menuitem"],
+[role="option"],
+[role="switch"],
+[role="checkbox"],
+[role="radio"],
 a,
 label[for],
+summary,
+[onclick],
+[tabindex]:not([tabindex="-1"]),
 input[type="checkbox"],
 input[type="radio"],
+input[type="submit"],
+input[type="button"],
 select,
 .cursor-pointer {
     cursor: pointer !important;
