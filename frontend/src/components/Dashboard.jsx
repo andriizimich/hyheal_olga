@@ -49,7 +49,7 @@ const TimelineTile = ({ tile, now, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="group relative flex items-stretch overflow-hidden rounded-2xl bg-[#5b7ee5] text-white shadow-[0_8px_24px_rgba(91,126,229,0.35)] transition-all duration-200 hover:shadow-[0_12px_30px_rgba(91,126,229,0.45)] hover:-translate-y-0.5 h-[128px]"
+      className="group relative flex items-stretch overflow-hidden rounded-md bg-[#5b7ee5] text-white shadow-[0_8px_24px_rgba(91,126,229,0.35)] transition-all duration-200 hover:shadow-[0_12px_30px_rgba(91,126,229,0.45)] hover:-translate-y-0.5 h-[128px]"
     >
       <div className="flex flex-col items-center justify-center flex-1 gap-3 border-r border-white/20">
         <Clock size={30} strokeWidth={1.7} />
@@ -72,7 +72,7 @@ const PrimaryTile = ({ tile, onClick, now }) => {
   return (
     <button
       onClick={onClick}
-      className={`group flex flex-col items-center justify-center gap-3 rounded-2xl h-[128px] transition-all duration-200 hover:-translate-y-0.5 ${
+      className={`group flex flex-col items-center justify-center gap-3 rounded-md h-[128px] transition-all duration-200 hover:-translate-y-0.5 ${
         active
           ? "bg-[#5b7ee5] text-white shadow-[0_8px_24px_rgba(91,126,229,0.35)] hover:shadow-[0_12px_30px_rgba(91,126,229,0.45)]"
           : "bg-white text-slate-500 border border-slate-100 shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:text-[#5b7ee5] hover:shadow-[0_8px_20px_rgba(15,23,42,0.08)]"
@@ -91,7 +91,7 @@ const SecondaryTile = ({ tile, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="group flex items-center gap-3.5 rounded-2xl bg-white border border-slate-100 shadow-[0_2px_10px_rgba(15,23,42,0.04)] px-5 h-[70px] text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(15,23,42,0.08)]"
+      className="group flex items-center gap-3.5 rounded-md bg-white border border-slate-100 shadow-[0_2px_10px_rgba(15,23,42,0.04)] px-5 h-[70px] text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(15,23,42,0.08)]"
     >
       <Icon size={24} strokeWidth={1.6} className="text-slate-400 shrink-0 group-hover:text-[#5b7ee5] transition-colors" />
       <span className="text-[14px] font-medium text-slate-600 leading-snug">{tile.label}</span>

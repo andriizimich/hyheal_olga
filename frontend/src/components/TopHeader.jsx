@@ -1,19 +1,12 @@
 import React from "react";
-import { Cloud, Video, HelpCircle, Bell } from "lucide-react";
+import { Video, HelpCircle, Bell } from "lucide-react";
 import { doctor } from "../mock";
 
 const TopHeader = () => {
   return (
     <header className="h-16 bg-white border-b border-slate-100 flex items-center justify-between pr-6 shrink-0 relative z-20">
       {/* Logo */}
-      <div className="w-[68px] flex items-center justify-center">
-        <div className="flex items-center">
-          <div className="relative">
-            <Cloud size={30} className="text-[#5b7ee5] fill-[#eef2fc]" strokeWidth={1.6} />
-          </div>
-        </div>
-      </div>
-      <div className="flex-1 pl-1">
+      <div className="pl-6">
         <span className="text-[20px] font-semibold text-[#5b7ee5] tracking-tight">
           MyHeal
         </span>

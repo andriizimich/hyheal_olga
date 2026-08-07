@@ -46,7 +46,7 @@ const Sidebar = ({ activeId, onSelect }) => {
               <TooltipTrigger asChild>
                 <button
                   onClick={() => onSelect(item.id)}
-                  className={`relative flex items-center justify-center w-11 h-11 rounded-xl transition-all duration-200 group ${
+                  className={`relative flex items-center justify-center w-11 h-11 rounded-md transition-all duration-200 group ${
                     isActive
                       ? "text-[#5b7ee5]"
                       : "text-slate-400 hover:text-[#5b7ee5] hover:bg-slate-50"
