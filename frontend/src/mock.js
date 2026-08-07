@@ -78,7 +78,17 @@ export const patientMenu = [
   { id: "profile", label: "Профіль", expandable: false },
   { id: "relations", label: "Зв'язки", expandable: true, sub: ["Родичі", "Контактні особи"] },
   { id: "history", label: "Історія прийомів", expandable: false },
-  { id: "card", label: "Медична картка", expandable: true, sub: ["Діагнози", "Алергії", "Щеплення"] },
+  { id: "card", label: "Медична картка", expandable: true, sub: [
+    "Номер мед. картки",
+    "Направлення",
+    "Історія захворювань",
+    "Виписані рецепти/е-Записи",
+    "Результати аналізів та діагностики",
+    "Процедури",
+    "Діагнози",
+    "Алергії",
+    "Щеплення",
+  ] },
   { id: "documents", label: "Медичні документи", expandable: false },
   { id: "insurance", label: "Страхування", expandable: false },
   { id: "prescriptions", label: "Призначення", expandable: true, sub: ["Ліки", "Процедури"] },
@@ -153,6 +163,19 @@ export const treatmentPlans = [
     ],
   },
 ];
+
+// Disease history episodes
+export const diseaseEpisodes = [
+  { id: 1, name: "I11.0 Гіпертензивна (гіпертонічна) хвороба серця з (застійною) серцевою недостатністю", type: "Лікування", start: "06.12.2024 15:15", updated: "06.12.2024 15:16" },
+  { id: 2, name: "A05.1 Ботулізм", type: "Лікування", start: "29.11.2024 10:35", updated: "29.11.2024 10:51" },
+  { id: 3, name: "A04.3 Ентерогеморагічна інфекція, спричинена Escherichia coli", type: "Діагностика", start: "29.11.2024 09:31", updated: "29.11.2024 09:49" },
+  { id: 4, name: "B18.0 Хронічний вірусний гепатит B з дельта-агентом", type: "Лікування", start: "25.11.2024 16:59", updated: "25.11.2024 17:23" },
+  { id: 5, name: "A01.1 Паратиф A", type: "Лікування", start: "27.11.2024 13:21", updated: "27.11.2024 15:02" },
+  { id: 6, name: "B18.0 Хронічний вірусний гепатит B з дельта-агентом", type: "Лікування", start: "25.11.2024 12:11", updated: "25.11.2024 12:25" },
+  { id: 7, name: "B06.9 Краснуха без ускладнень", type: "Лікування", start: "20.11.2024 12:26", updated: "20.11.2024 12:50" },
+  { id: 8, name: "B18.0 Хронічний вірусний гепатит B з дельта-агентом", type: "Лікування", start: "20.11.2024 11:40", updated: "21.11.2024 16:17" },
+];
+
 
 // Patient search result cards
 export const patientResults = [

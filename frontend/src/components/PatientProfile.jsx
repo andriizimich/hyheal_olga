@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { patientMenu, defaultPatientProfile } from "../mock";
 import { Checkbox } from "./ui/checkbox";
 import ProfileView from "./ProfileView";
+import DiseaseHistoryView from "./DiseaseHistoryView";
 import {
   BadgeCheck,
   Mars,
@@ -180,9 +181,15 @@ const PatientProfile = () => {
     }
   };
 
+  const subToSection = (label) =>
+    label === "Історія захворювань" ? "disease-history" : `sub-${label}`;
+
   const renderMain = () => {
     if (section === "profile") return <ProfileView p={p} />;
     if (section === "history") return <AppointmentView p={p} />;
+    if (section === "disease-history") return <DiseaseHistoryView p={p} />;
+    if (section.startsWith("sub-"))
+      return <Placeholder title={section.slice(4)} />;
     const item = patientMenu.find((m) => m.id === section);
     return <Placeholder title={item ? item.label : "Розділ"} />;
   };
@@ -261,7 +268,12 @@ const PatientProfile = () => {
                   {item.sub.map((s) => (
                     <button
                       key={s}
-                      className="w-full text-left pl-6 pr-3 py-2 text-[13.5px] text-slate-500 hover:text-[#5b7ee5]"
+                      onClick={() => setSection(subToSection(s))}
+                      className={`w-full text-left pl-6 pr-3 py-2 text-[13.5px] transition ${
+                        section === subToSection(s)
+                          ? "text-[#5b7ee5] bg-[#eef2fc] font-semibold"
+                          : "text-slate-500 hover:text-[#5b7ee5]"
+                      }`}
                     >
                       {s}
                     </button>
