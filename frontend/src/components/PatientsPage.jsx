@@ -28,11 +28,11 @@ const PatientsPage = () => {
   };
 
   return (
-    <div className="p-8 max-w-[1200px]">
-      <h1 className="text-[28px] font-light text-slate-400 mb-4">Пацієнти</h1>
+    <div className="px-8 pt-3 pb-8 max-w-[1200px]">
+      <h1 className="text-[28px] font-light text-slate-400 mb-3">Пацієнти</h1>
 
       {/* Phone search */}
-      <div className="mb-5">
+      <div className="mb-4">
         <label className="block text-[15px] font-bold text-slate-600 mb-2">
           Пошук пацієнта за номером телефону в моєму медзакладі
         </label>
