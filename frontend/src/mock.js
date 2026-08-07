@@ -73,6 +73,38 @@ export const doctorMenu = [
 
 export const doctorCode = "722bd799-9a85-40c0-a297-90ec132c7bdd";
 
+// Patient search result cards
+export const patientResults = [
+  {
+    id: 1,
+    name: "Ніцос Анна Андріївна",
+    hasDeclaration: true,
+    esoz: true,
+    gender: "female",
+    birth: "28.05.1999",
+    age: "23 роки",
+    location: "Київ , Україна",
+    phone: "+38 (095) 753-04-59",
+    visits: 259,
+    avatar:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHBvcnRyYWl0JTIwaGVhZHNob3R8ZW58MHx8fHwxNzg2MTE5MTEyfDA&ixlib=rb-4.1.0&q=85&w=200&h=200&fit=crop&crop=faces",
+  },
+  {
+    id: 2,
+    name: "Ніцос Роман Андрійович",
+    hasDeclaration: false,
+    esoz: false,
+    gender: "male",
+    birth: "04.01.2006",
+    age: "17 років",
+    location: "Київ , Україна",
+    phone: "+38 (012) 099-11-30",
+    visits: 0,
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NjV8MHwxfHNlYXJjaHwyfHxtYW4lMjBwb3J0cmFpdCUyMGhlYWRzaG90fGVufDB8fHx8MTc4NjExOTExMnww&ixlib=rb-4.1.0&q=85&w=200&h=200&fit=crop&crop=faces",
+  },
+];
+
 // Appointments for doctor timeline
 export const appointments = [
   {

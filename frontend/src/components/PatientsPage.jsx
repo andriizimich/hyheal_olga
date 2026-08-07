@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import { Search } from "lucide-react";
 import { toast } from "sonner";
+import { patientResults } from "../mock";
+import PatientResultCard from "./PatientResultCard";
 
 const PatientsPage = () => {
   const [phone, setPhone] = useState("");
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [birth, setBirth] = useState("");
+  const [results, setResults] = useState([]);
 
   const handlePhoneSearch = () => {
-    toast("Пошук пацієнта", {
-      description: phone ? `Номер: ${phone}` : "Введіть номер телефону",
+    if (!phone.trim()) {
+      toast("Пошук пацієнта", { description: "Введіть номер телефону" });
+      setResults([]);
+      return;
+    }
+    setResults(patientResults);
+    toast("Знайдено пацієнтів", { description: `Результатів: ${patientResults.length}` });
+  };
+
+  const handleCardAction = (p) => {
+    toast(p.esoz ? "Записати до лікаря" : "Зареєструвати в ЕСОЗ", {
+      description: p.name,
     });
   };
 
@@ -27,6 +40,7 @@ const PatientsPage = () => {
           <input
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handlePhoneSearch()}
             placeholder="+38 (__) ___-__-__"
             className="flex-1 h-12 rounded-l-md border border-slate-200 border-r-0 px-4 text-[15px] text-slate-600 focus:outline-none focus:border-[#5b7ee5]"
           />
@@ -102,6 +116,20 @@ const PatientsPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Search results */}
+      {results.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-[17px] font-bold text-slate-600 mb-4">
+            Результати пошуку
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {results.map((p) => (
+              <PatientResultCard key={p.id} p={p} onAction={handleCardAction} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
