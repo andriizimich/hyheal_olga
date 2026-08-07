@@ -101,12 +101,6 @@ const PatientsPage = () => {
             </button>
           </div>
         </div>
-
-        <p className="text-right text-[15px] text-slate-400 mt-6 leading-relaxed">
-          Введіть в пошук номер телефону або
-          <br />
-          використовуйте розширений пошук
-        </p>
       </div>
     </div>
   );

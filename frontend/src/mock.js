@@ -64,7 +64,7 @@ export const doctorMenu = [
   { id: "templates", label: "Шаблони медзаписів", icon: "FileText", to: null },
   { id: "forms", label: "Медичні форми", icon: "ClipboardList", to: null },
   { id: "services", label: "Послуги лікаря (iBoss)", icon: "Briefcase", to: null },
-  { id: "my-patients", label: "Мої пацієнти", icon: "Users", to: null },
+  { id: "my-patients", label: "Мої пацієнти", icon: "Users", to: "/patients" },
   { id: "provided", label: "Надані послуги (iBoss)", icon: "CheckSquare", to: null },
   { id: "cases", label: "Мої справи", icon: "RefreshCw", to: null },
   { id: "ratings", label: "Рейтинги та відгуки", icon: "Star", to: null },
