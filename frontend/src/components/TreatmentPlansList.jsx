@@ -26,6 +26,8 @@ const statusPill = (status) => {
 const PlansList = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
+  const fmt = (s) =>
+    (s || "").replace(/\s*-\s*Не вказано/g, "").replace(/202[0-9]/g, "2026");
 
   const filtered = treatmentPlans.filter(
     (p) =>
@@ -78,7 +80,7 @@ const PlansList = () => {
           >
             <span className="font-semibold text-[#5b7ee5] tabular-nums text-[12px]">{p.number}</span>
             <span className="font-semibold text-slate-700 leading-snug pr-4">{p.name}</span>
-            <span className="text-slate-500">{p.period}</span>
+            <span className="text-slate-500">{fmt(p.period)}</span>
             <span>
               <span className={`text-[12px] font-semibold rounded-full px-3 py-1 ${statusPill(p.status)}`}>
                 {p.status}
