@@ -121,11 +121,12 @@ a,
 label[for],
 input[type="checkbox"],
 input[type="radio"],
-select {
-    cursor: pointer;
+select,
+.cursor-pointer {
+    cursor: pointer !important;
 }
 
 button:disabled,
 [aria-disabled="true"] {
-    cursor: not-allowed;
+    cursor: not-allowed !important;
 }
