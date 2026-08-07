@@ -105,14 +105,14 @@ const Dashboard = ({ now, onTileClick }) => {
       {/* Primary tiles */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
         {primaryTiles.map((tile) => (
-          <PrimaryTile key={tile.id} tile={tile} now={now} onClick={() => onTileClick(tile.label)} />
+          <PrimaryTile key={tile.id} tile={tile} now={now} onClick={() => onTileClick(tile)} />
         ))}
       </div>
 
       {/* Secondary tiles */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {secondaryTiles.map((tile) => (
-          <SecondaryTile key={tile.id} tile={tile} onClick={() => onTileClick(tile.label)} />
+          <SecondaryTile key={tile.id} tile={tile} onClick={() => onTileClick(tile)} />
         ))}
       </div>
     </div>

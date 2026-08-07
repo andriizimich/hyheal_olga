@@ -1,21 +1,41 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import TopHeader from "./components/TopHeader";
 import Sidebar from "./components/Sidebar";
 import ProfileCard from "./components/ProfileCard";
 import Dashboard from "./components/Dashboard";
 import DoctorPage from "./components/DoctorPage";
+import PatientsPage from "./components/PatientsPage";
 import { Toaster } from "./components/ui/sonner";
 import { toast } from "sonner";
 
+// Map sidebar item id -> route
+const navRoutes = {
+  timeline: "/",
+  patients: "/patients",
+};
+
+// Map current pathname -> active sidebar id
+const pathToNav = (pathname) => {
+  if (pathname.startsWith("/patients")) return "patients";
+  return "timeline";
+};
+
 const Layout = ({ children }) => {
-  const [activeNav, setActiveNav] = useState("timeline");
   const navigate = useNavigate();
+  const location = useLocation();
+  const activeNav = pathToNav(location.pathname);
 
   const handleNav = (id) => {
-    setActiveNav(id);
-    if (id === "timeline") navigate("/");
+    if (navRoutes[id]) navigate(navRoutes[id]);
+    else toast("Розділ у розробці");
   };
 
   return (
@@ -32,14 +52,19 @@ const Layout = ({ children }) => {
 
 const Home = () => {
   const [now, setNow] = useState(new Date());
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  const handleTileClick = (label) => {
-    toast(label, { description: "Розділ у розробці" });
+  const handleTileClick = (tile) => {
+    if (tile.id === "patients") {
+      navigate("/patients");
+      return;
+    }
+    toast(tile.label, { description: "Розділ у розробці" });
   };
 
   return (
@@ -68,6 +93,14 @@ function App() {
             element={
               <Layout>
                 <DoctorPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/patients"
+            element={
+              <Layout>
+                <PatientsPage />
               </Layout>
             }
           />
