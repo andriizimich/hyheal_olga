@@ -41,10 +41,10 @@ const PatientSideMenu = () => {
         <div key={item.id} className="border-b border-slate-100">
           <button
             onClick={() => item.expandable && toggle(item.id)}
-            className={`w-full flex items-center justify-between px-3 py-2.5 text-[14px] transition ${
+            className={`w-full flex items-center justify-between px-3 py-2.5 text-[14px] font-semibold transition ${
               item.active
-                ? "text-[#5b7ee5] bg-[#eef2fc] font-semibold"
-                : "text-slate-600 hover:bg-white/70"
+                ? "text-[#5b7ee5] bg-[#eef2fc]"
+                : "text-slate-500 hover:bg-white/70"
             }`}
           >
             {item.label}

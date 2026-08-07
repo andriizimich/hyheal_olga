@@ -55,7 +55,7 @@ const Sidebar = ({ activeId, onSelect }) => {
                   {isActive && (
                     <span className="absolute left-[-16px] top-1/2 -translate-y-1/2 h-6 w-[3px] rounded-full bg-[#5b7ee5]" />
                   )}
-                  <Icon size={22} strokeWidth={2.4} />
+                  <Icon size={22} strokeWidth={1.8} />
                 </button>
               </TooltipTrigger>
               <TooltipContent side="right" className="bg-slate-800 text-white border-none">
