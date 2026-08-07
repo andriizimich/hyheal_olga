@@ -14,6 +14,8 @@ import Dashboard from "./components/Dashboard";
 import DoctorPage from "./components/DoctorPage";
 import PatientsPage from "./components/PatientsPage";
 import PatientProfile from "./components/PatientProfile";
+import TreatmentPlansList from "./components/TreatmentPlansList";
+import TreatmentPlanDetail from "./components/TreatmentPlanDetail";
 import { Toaster } from "./components/ui/sonner";
 import { toast } from "sonner";
 
@@ -21,11 +23,14 @@ import { toast } from "sonner";
 const navRoutes = {
   timeline: "/",
   patients: "/patients",
+  plans: "/treatment-plans",
 };
 
 // Map current pathname -> active sidebar id
 const pathToNav = (pathname) => {
-  if (pathname.startsWith("/patients")) return "patients";
+  if (pathname.startsWith("/patients") || pathname.startsWith("/patient/"))
+    return "patients";
+  if (pathname.startsWith("/treatment-plans")) return "plans";
   return "timeline";
 };
 
@@ -63,6 +68,10 @@ const Home = () => {
   const handleTileClick = (tile) => {
     if (tile.id === "patients") {
       navigate("/patients");
+      return;
+    }
+    if (tile.id === "treatment-plans") {
+      navigate("/treatment-plans");
       return;
     }
     toast(tile.label, { description: "Розділ у розробці" });
@@ -110,6 +119,22 @@ function App() {
             element={
               <Layout>
                 <PatientProfile />
+              </Layout>
+            }
+          />
+          <Route
+            path="/treatment-plans"
+            element={
+              <Layout>
+                <TreatmentPlansList />
+              </Layout>
+            }
+          />
+          <Route
+            path="/treatment-plans/:id"
+            element={
+              <Layout>
+                <TreatmentPlanDetail />
               </Layout>
             }
           />
