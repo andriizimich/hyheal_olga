@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { treatmentPlans } from "../mock";
-import { Search, Plus, ChevronRight } from "lucide-react";
+import { Search, Plus, MoreVertical, Pencil, Trash2 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "./ui/dropdown-menu";
 
 const statusPill = (status) => {
   switch (status) {
@@ -55,35 +61,53 @@ const PlansList = () => {
       <div className="rounded-md border border-slate-100 overflow-hidden bg-white">
         <div
           className="grid gap-4 px-5 py-3 bg-slate-50 border-b border-slate-100 text-[13px] font-semibold text-slate-500"
-          style={{ gridTemplateColumns: "220px 1fr 240px 260px 130px 40px" }}
+          style={{ gridTemplateColumns: "200px minmax(0,1fr) 260px 130px 60px" }}
         >
           <span>№ плану</span>
           <span>Найменування (діагноз)</span>
-          <span>Пацієнт</span>
           <span>Період покриття</span>
           <span>Статус</span>
-          <span></span>
+          <span className="text-right">Дії</span>
         </div>
         {filtered.map((p) => (
-          <button
+          <div
             key={p.id}
             onClick={() => navigate(`/treatment-plans/${p.id}`)}
-            className="w-full grid gap-4 px-5 py-4 border-b border-slate-100 last:border-b-0 text-[14px] text-slate-600 items-center text-left hover:bg-slate-50/70 transition"
-            style={{ gridTemplateColumns: "220px 1fr 240px 260px 130px 40px" }}
+            className="w-full grid gap-4 px-5 py-4 border-b border-slate-100 last:border-b-0 text-[14px] text-slate-600 items-center text-left hover:bg-slate-50/70 transition cursor-pointer"
+            style={{ gridTemplateColumns: "200px minmax(0,1fr) 260px 130px 60px" }}
           >
-            <span className="font-semibold text-[#5b7ee5] tabular-nums">{p.number}</span>
+            <span className="font-semibold text-[#5b7ee5] tabular-nums text-[12px]">{p.number}</span>
             <span className="font-semibold text-slate-700 leading-snug pr-4">{p.name}</span>
-            <span className="text-slate-500">{p.patient}</span>
             <span className="text-slate-500">{p.period}</span>
             <span>
               <span className={`text-[12px] font-semibold rounded-full px-3 py-1 ${statusPill(p.status)}`}>
                 {p.status}
               </span>
             </span>
-            <span className="text-slate-300 flex justify-end">
-              <ChevronRight size={18} />
+            <span className="flex justify-end" onClick={(e) => e.stopPropagation()}>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="h-8 w-8 rounded-md hover:bg-slate-100 flex items-center justify-center text-slate-400">
+                    <MoreVertical size={16} />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-40">
+                  <DropdownMenuItem
+                    onClick={() => toast("Редагувати", { description: p.number })}
+                    className="cursor-pointer"
+                  >
+                    <Pencil size={15} className="mr-2 text-[#5b7ee5]" /> Редагувати
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => toast("Видалити", { description: p.number })}
+                    className="cursor-pointer text-[#e85b5b] focus:text-[#e85b5b]"
+                  >
+                    <Trash2 size={15} className="mr-2" /> Видалити
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </span>
-          </button>
+          </div>
         ))}
         {filtered.length === 0 && (
           <p className="px-5 py-8 text-center text-[14px] text-slate-400">Планів не знайдено</p>
