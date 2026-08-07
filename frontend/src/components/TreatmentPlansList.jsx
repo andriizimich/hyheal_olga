@@ -39,7 +39,7 @@ const PlansList = () => {
   return (
     <div className="px-8 pt-3 pb-8">
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-[28px] font-light text-slate-400">Плани лікування</h1>
+        <h1 className="text-[24px] font-light text-slate-400">Плани лікування</h1>
         <button
           onClick={() => toast("Створити план лікування", { description: "Розділ у розробці" })}
           className="flex items-center gap-2 rounded-md bg-[#5b7ee5] text-white text-[14px] font-semibold px-4 py-2.5 hover:bg-[#4c6fd6] transition"

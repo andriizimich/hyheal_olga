@@ -53,7 +53,7 @@ const PlanDetail = () => {
         <span className={`text-[11px] font-semibold rounded px-2 py-0.5 ${statusPill(plan.status)}`}>
           {plan.status}
         </span>
-        <h1 className="text-[24px] font-bold text-slate-800">
+        <h1 className="text-[20px] font-bold text-slate-800">
           План лікування <span className="text-slate-500 font-semibold">№ {plan.number}</span>
         </h1>
         <div className="flex items-center gap-2 ml-auto">

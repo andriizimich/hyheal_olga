@@ -49,7 +49,7 @@ const AppointmentView = ({ p }) => {
     <div className="p-6 bg-white">
       {/* Header row */}
       <div className="flex flex-wrap items-start justify-between gap-6 mb-4">
-        <h1 className="text-[24px] font-bold text-slate-800">Прийом пацієнта</h1>
+        <h1 className="text-[20px] font-bold text-slate-800">Прийом пацієнта</h1>
         <div className="flex gap-10 text-[13px]">
           <div>
             <p className="font-semibold text-slate-500 mb-1">Статус</p>

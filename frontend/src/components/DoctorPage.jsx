@@ -195,7 +195,7 @@ const DoctorPage = () => {
       {/* Title */}
       <div className="flex items-center gap-3 mb-1">
         <UserRound size={26} className="text-[#5b7ee5]" strokeWidth={1.8} />
-        <h1 className="text-[24px] font-bold text-slate-800">
+        <h1 className="text-[20px] font-bold text-slate-800">
           Сторінка лікаря: {doctor.name}
         </h1>
         <span className="flex items-center gap-1.5 text-[13px] font-semibold text-[#3fb984]">

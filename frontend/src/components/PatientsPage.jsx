@@ -29,7 +29,7 @@ const PatientsPage = () => {
 
   return (
     <div className="px-8 pt-3 pb-8 max-w-[1200px]">
-      <h1 className="text-[28px] font-light text-slate-400 mb-3">Пацієнти</h1>
+      <h1 className="text-[24px] font-light text-slate-400 mb-3">Пацієнти</h1>
 
       {/* Phone search */}
       <div className="mb-4">

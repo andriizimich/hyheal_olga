@@ -46,7 +46,7 @@ const ProfileView = ({ p }) => {
   const genderShort = p.gender === "male" ? "Чол" : "Жін";
   return (
     <div className="p-6 bg-white">
-      <h1 className="text-[26px] font-bold text-slate-800 mb-5">
+      <h1 className="text-[22px] font-bold text-slate-800 mb-5">
         Профіль: {p.name}
       </h1>
 
