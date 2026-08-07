@@ -17,7 +17,7 @@ const statusPill = (status) => {
   }
 };
 
-const grid = "minmax(0,1.4fr) minmax(0,1.6fr) 200px 150px";
+const grid = "minmax(0,1.3fr) minmax(0,1.4fr) minmax(0,1fr) 170px 130px";
 
 const AppointmentHistoryView = ({ p, onOpen }) => {
   const [query, setQuery] = useState("");
@@ -61,6 +61,7 @@ const AppointmentHistoryView = ({ p, onOpen }) => {
         >
           <span>Назва прийому</span>
           <span>Епізод</span>
+          <span>Лікар</span>
           <span>Дата і час завершення</span>
           <span>Статус</span>
         </div>
@@ -82,6 +83,10 @@ const AppointmentHistoryView = ({ p, onOpen }) => {
             >
               {a.episode}
             </button>
+            <span className="leading-tight">
+              <span className="block text-[#5b7ee5] font-semibold">{a.doctor}</span>
+              <span className="block text-[12px] text-slate-400">{a.specialty}</span>
+            </span>
             <span className="text-slate-500">{a.finished}</span>
             <span>
               <span className={`text-[12px] font-semibold rounded-full px-3 py-1 ${statusPill(a.status)}`}>
