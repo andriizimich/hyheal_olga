@@ -101,3 +101,70 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Verify mouse cursor behavior across MyHeal CRM app - user reports pointer/hand cursor does NOT appear when hovering clickable elements"
+
+frontend:
+  - task: "Cursor pointer behavior on Dashboard page"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/index.css"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Tested dashboard tile (Мій календар), left sidebar icon, top-right avatar, and top-left logo. All elements correctly show cursor:pointer using getComputedStyle on actual topmost element via document.elementFromPoint."
+  
+  - task: "Cursor pointer behavior on Doctor page"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/index.css"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Tested all menu items (Таймлайн, Вітрина лікаря, etc.), patient name links, Профіль button, and Сьогодні tab. All clickable elements correctly show cursor:pointer. Initial test showed one failure at coordinates (150,450) but verification revealed this was a non-clickable div (employee code bar), not an actual menu item. All 10 actual menu buttons have cursor:pointer."
+  
+  - task: "Cursor pointer behavior on Patients page"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/index.css"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Tested phone search button (magnifier), Розширений пошук link, and after searching with phone number +38 (095) 753-04-59, tested the result card action button 'Записати до лікаря'. All elements correctly show cursor:pointer."
+  
+  - task: "Check for overlay elements intercepting hover"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/index.css"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Checked for full-screen overlay elements with pointer-events:auto on all three pages (Dashboard, Doctor, Patients). No overlays detected that would intercept hover events."
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+
+test_plan:
+  current_focus:
+    - "All cursor behavior tests completed"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    - agent: "testing"
+      message: "Completed comprehensive cursor behavior verification across all three pages (Dashboard, Doctor, Patients). Used document.elementFromPoint and getComputedStyle to programmatically verify cursor values. Result: PASS - All clickable elements correctly show cursor:pointer. No overlay issues detected. The global CSS rule in index.css (lines 118-138) is working correctly to apply cursor:pointer to all interactive elements."
