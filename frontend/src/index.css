@@ -141,3 +141,14 @@ button:disabled,
 [aria-disabled="true"] {
     cursor: not-allowed !important;
 }
+
+
+/* Toast (sonner) text readability overrides */
+[data-sonner-toast] [data-title] {
+    color: #1e293b !important;
+    font-weight: 600 !important;
+}
+[data-sonner-toast] [data-description] {
+    color: #475569 !important;
+    opacity: 1 !important;
+}
