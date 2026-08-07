@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { patientMenu, defaultPatientProfile } from "../mock";
 import { Checkbox } from "./ui/checkbox";
@@ -16,6 +16,18 @@ import {
   Clock,
   RotateCcw,
 } from "lucide-react";
+
+const subToSection = (label) =>
+  label === "Історія захворювань" ? "disease-history" : `sub-${label}`;
+
+const findParentId = (sec) => {
+  for (const m of patientMenu) {
+    if (m.expandable && m.sub && m.sub.some((s) => subToSection(s) === sec)) {
+      return m.id;
+    }
+  }
+  return null;
+};
 
 const Field = ({ label, value, children }) => (
   <div>
@@ -169,9 +181,19 @@ const Placeholder = ({ title }) => (
 
 const PatientProfile = () => {
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
   const p = location.state?.patient || defaultPatientProfile;
-  const [section, setSection] = useState("profile");
-  const [open, setOpen] = useState({});
+  const initialSection = searchParams.get("section") || "profile";
+  const [section, setSectionState] = useState(initialSection);
+  const [open, setOpen] = useState(() => {
+    const parent = findParentId(initialSection);
+    return parent ? { [parent]: true } : {};
+  });
+
+  const setSection = (s) => {
+    setSectionState(s);
+    setSearchParams({ section: s }, { replace: true });
+  };
 
   const handleMenu = (item) => {
     if (item.expandable) {
@@ -180,9 +202,6 @@ const PatientProfile = () => {
       setSection(item.id);
     }
   };
-
-  const subToSection = (label) =>
-    label === "Історія захворювань" ? "disease-history" : `sub-${label}`;
 
   const renderMain = () => {
     if (section === "profile") return <ProfileView p={p} />;
