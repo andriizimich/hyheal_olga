@@ -97,7 +97,7 @@ const PatientProfile = () => {
         <h2 className="text-[18px] font-bold text-slate-800 leading-tight">{p.name}</h2>
         <p className="text-[15px] text-slate-500 mt-1">{p.phone}</p>
 
-        <div className="flex items-center gap-6 mt-4">
+        <div className="flex items-center justify-center gap-6 mt-4">
           <div className="flex flex-col items-center gap-1">
             <BadgeCheck size={22} className="text-[#3fb984]" />
             <span className="text-[12px] text-slate-400">
