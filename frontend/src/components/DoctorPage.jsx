@@ -112,7 +112,7 @@ const ProfileSide = () => {
   );
 };
 
-const AppointmentCard = ({ a }) => (
+const AppointmentCard = ({ a, onOpen }) => (
   <div className="rounded-md border border-slate-100 bg-white shadow-[0_1px_6px_rgba(15,23,42,0.04)] px-5 py-4">
     <div className="flex items-center flex-wrap gap-x-4 gap-y-2">
       <span className="font-bold text-slate-700 text-[15px] tabular-nums">{a.time}</span>
@@ -139,7 +139,10 @@ const AppointmentCard = ({ a }) => (
       </div>
     )}
 
-    <button className="mt-2 text-[#5b7ee5] font-semibold text-[15px] hover:underline">
+    <button
+      onClick={() => onOpen(a)}
+      className="mt-2 text-[#5b7ee5] font-semibold text-[15px] hover:underline"
+    >
       {a.patient}
     </button>
 
@@ -164,9 +167,24 @@ const AppointmentCard = ({ a }) => (
 );
 
 const DoctorPage = () => {
+  const navigate = useNavigate();
   const [tab, setTab] = useState("today");
   const [hidden, setHidden] = useState(false);
   const [query, setQuery] = useState("");
+
+  const openPatient = (a) =>
+    navigate(`/patient/${a.id}`, {
+      state: {
+        patient: {
+          name: a.patient,
+          phone: "+38 (093) 432-50-70",
+          gender: a.gender,
+          age: a.age,
+          birth: a.birth,
+          verified: true,
+        },
+      },
+    });
 
   const filtered = appointments.filter((a) =>
     a.patient.toLowerCase().includes(query.toLowerCase())
@@ -266,7 +284,7 @@ const DoctorPage = () => {
           {/* Appointments */}
           <div className="space-y-3">
             {filtered.map((a) => (
-              <AppointmentCard key={a.id} a={a} />
+              <AppointmentCard key={a.id} a={a} onOpen={openPatient} />
             ))}
             {filtered.length === 0 && (
               <p className="text-slate-400 text-[14px] py-8 text-center">

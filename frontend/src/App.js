@@ -13,6 +13,7 @@ import ProfileCard from "./components/ProfileCard";
 import Dashboard from "./components/Dashboard";
 import DoctorPage from "./components/DoctorPage";
 import PatientsPage from "./components/PatientsPage";
+import PatientProfile from "./components/PatientProfile";
 import { Toaster } from "./components/ui/sonner";
 import { toast } from "sonner";
 
@@ -101,6 +102,14 @@ function App() {
             element={
               <Layout>
                 <PatientsPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/patient/:id"
+            element={
+              <Layout>
+                <PatientProfile />
               </Layout>
             }
           />

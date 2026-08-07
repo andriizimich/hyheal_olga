@@ -73,6 +73,28 @@ export const doctorMenu = [
 
 export const doctorCode = "722bd799-9a85-40c0-a297-90ec132c7bdd";
 
+// Patient profile left menu
+export const patientMenu = [
+  { id: "profile", label: "Профіль", expandable: true, sub: ["Персональні дані", "Контакти", "Документи"] },
+  { id: "relations", label: "Зв'язки", expandable: true, sub: ["Родичі", "Контактні особи"] },
+  { id: "history", label: "Історія прийомів", expandable: false, active: true },
+  { id: "card", label: "Медична картка", expandable: true, sub: ["Діагнози", "Алергії", "Щеплення"] },
+  { id: "documents", label: "Медичні документи", expandable: false },
+  { id: "insurance", label: "Страхування", expandable: false },
+  { id: "prescriptions", label: "Призначення", expandable: true, sub: ["Ліки", "Процедури"] },
+  { id: "finance", label: "Фінанси", expandable: true, sub: ["Рахунки", "Платежі"] },
+];
+
+// Default patient profile (used when opening a patient card)
+export const defaultPatientProfile = {
+  name: "Сліпуха Андрій Володимирович",
+  phone: "+38 (093) 432-50-70",
+  gender: "male",
+  age: "25 років",
+  birth: "12.05.1997",
+  verified: true,
+};
+
 // Patient search result cards
 export const patientResults = [
   {

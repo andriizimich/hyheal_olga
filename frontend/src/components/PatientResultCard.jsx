@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ShieldPlus,
   FlaskConical,
@@ -21,6 +22,20 @@ const MiniIcon = ({ Icon, color }) => (
 );
 
 const PatientResultCard = ({ p, onAction }) => {
+  const navigate = useNavigate();
+  const openProfile = () =>
+    navigate(`/patient/${p.id}`, {
+      state: {
+        patient: {
+          name: p.name,
+          phone: p.phone,
+          gender: p.gender,
+          age: p.age,
+          birth: p.birth,
+          verified: p.esoz,
+        },
+      },
+    });
   return (
     <div
       className={`relative flex gap-5 bg-white rounded-md border border-slate-100 shadow-[0_1px_8px_rgba(15,23,42,0.06)] p-5 overflow-hidden ${
@@ -33,7 +48,8 @@ const PatientResultCard = ({ p, onAction }) => {
           <img
             src={p.avatar}
             alt={p.name}
-            className="h-[110px] w-[110px] rounded-full object-cover bg-slate-100"
+            onClick={openProfile}
+            className="h-[110px] w-[110px] rounded-full object-cover bg-slate-100 cursor-pointer hover:ring-2 hover:ring-[#5b7ee5] transition"
           />
           {p.hasDeclaration && (
             <span className="absolute -top-1 -left-1 h-8 w-8 rounded-full bg-[#3fb984] text-white flex items-center justify-center ring-2 ring-white">
@@ -57,7 +73,10 @@ const PatientResultCard = ({ p, onAction }) => {
         >
           {p.hasDeclaration ? "Є декларація" : "Відсутня реєстрація в ЕСОЗ"}
         </p>
-        <h3 className="text-[19px] font-bold text-slate-700 leading-tight">
+        <h3
+          onClick={openProfile}
+          className="text-[19px] font-bold text-slate-700 leading-tight cursor-pointer hover:text-[#5b7ee5] transition"
+        >
           {p.name}
         </h3>
 
