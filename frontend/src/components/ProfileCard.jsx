@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { doctor } from "../mock";
 import { BadgeCheck } from "lucide-react";
 
@@ -9,8 +10,12 @@ const Detail = ({ label, value }) => (
 );
 
 const ProfileCard = () => {
+  const navigate = useNavigate();
   return (
-    <div className="bg-white rounded-md border border-slate-100 shadow-[0_2px_10px_rgba(15,23,42,0.04)] px-5 py-4 mb-5">
+    <div
+      onClick={() => navigate("/doctor")}
+      className="bg-white rounded-md border border-slate-100 shadow-[0_2px_10px_rgba(15,23,42,0.04)] px-5 py-4 mb-5 cursor-pointer hover:shadow-[0_6px_18px_rgba(15,23,42,0.08)] transition-shadow"
+    >
       <div className="flex items-start gap-4">
         <img
           src={doctor.avatar}
