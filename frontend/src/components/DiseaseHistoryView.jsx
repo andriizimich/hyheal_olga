@@ -28,7 +28,7 @@ const DateCell = ({ value }) => {
   );
 };
 
-const grid = "70px minmax(0,1fr) 130px 140px 160px 60px";
+const grid = "56px minmax(0,1fr) 120px 130px 150px 52px";
 
 const DiseaseHistoryView = ({ p }) => {
   const [tab, setTab] = useState("Епізоди");
