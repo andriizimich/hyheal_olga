@@ -35,12 +35,14 @@ const PlanDetail = () => {
   const navigate = useNavigate();
   const plan = treatmentPlans.find((p) => p.id === id) || treatmentPlans[0];
   const [showMore, setShowMore] = useState(false);
+  const fmt = (s) =>
+    (s || "").replace(/\s*-\s*Не вказано/g, "").replace(/202[0-9]/g, "2026");
 
   return (
     <div className="p-6">
       {/* Header */}
       <div className="flex flex-wrap items-center gap-3 mb-6">
-        <span className={`text-[13px] font-semibold rounded-full px-4 py-1.5 ${statusPill(plan.status)}`}>
+        <span className={`text-[11px] font-semibold rounded px-2 py-0.5 ${statusPill(plan.status)}`}>
           {plan.status}
         </span>
         <h1 className="text-[24px] font-bold text-slate-800">
@@ -76,7 +78,7 @@ const PlanDetail = () => {
         </div>
         <div>
           <p className="text-[14px] font-bold text-slate-600 mb-1">Період покриття</p>
-          <p className="text-[15px] text-slate-500 border-b border-slate-200 pb-2">{plan.period}</p>
+          <p className="text-[15px] text-slate-500 border-b border-slate-200 pb-2">{fmt(plan.period)}</p>
         </div>
       </div>
 
@@ -127,7 +129,7 @@ const PlanDetail = () => {
       <div className="rounded-md border border-slate-100 overflow-hidden">
         <div
           className="grid gap-4 px-4 py-3 bg-slate-50 border-b border-slate-100 text-[13px] font-semibold text-slate-500"
-          style={{ gridTemplateColumns: "40px 60px 1fr 200px 120px 120px 60px" }}
+          style={{ gridTemplateColumns: "40px 56px minmax(0,1fr) 150px 110px 110px 50px" }}
         >
           <span></span>
           <span>Тип</span>
@@ -141,7 +143,7 @@ const PlanDetail = () => {
           <div
             key={i}
             className="grid gap-4 px-4 py-4 border-b border-slate-100 last:border-b-0 text-[14px] text-slate-600 items-center hover:bg-slate-50/60"
-            style={{ gridTemplateColumns: "40px 60px 1fr 200px 120px 120px 60px" }}
+            style={{ gridTemplateColumns: "40px 56px minmax(0,1fr) 150px 110px 110px 50px" }}
           >
             <button className="h-6 w-6 rounded border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-slate-100">
               <Plus size={14} />
@@ -158,7 +160,7 @@ const PlanDetail = () => {
               )}
             </span>
             <span className="font-semibold text-slate-700 leading-snug pr-4">{it.name}</span>
-            <span className="text-slate-500">{it.planned}</span>
+            <span className="text-slate-500 text-[11px]">{fmt(it.planned)}</span>
             <span className="text-slate-500">{it.qty}</span>
             <span>
               <span className="text-[12px] font-medium text-slate-500 border border-slate-200 rounded px-2 py-0.5">
@@ -172,6 +174,22 @@ const PlanDetail = () => {
             </span>
           </div>
         ))}
+      </div>
+
+      {/* Bottom actions */}
+      <div className="flex justify-end gap-3 mt-6">
+        <button
+          onClick={() => toast("Створити призначення", { description: plan.patient })}
+          className="rounded-md bg-[#5b7ee5] text-white text-[14px] font-semibold px-5 py-2.5 hover:bg-[#4c6fd6] transition"
+        >
+          Створити призначення
+        </button>
+        <button
+          onClick={() => navigate("/treatment-plans")}
+          className="rounded-md border border-slate-200 text-slate-600 text-[14px] font-medium px-5 py-2.5 hover:bg-slate-50 transition"
+        >
+          Повернутись
+        </button>
       </div>
     </div>
   );
