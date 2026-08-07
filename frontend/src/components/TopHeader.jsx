@@ -1,15 +1,20 @@
 import React from "react";
 import { Video, HelpCircle, Bell } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { doctor } from "../mock";
 
 const TopHeader = () => {
+  const navigate = useNavigate();
   return (
     <header className="h-16 bg-white border-b border-slate-100 flex items-center justify-between pr-6 shrink-0 relative z-20">
       {/* Logo */}
       <div className="pl-6">
-        <span className="text-[20px] font-semibold text-[#5b7ee5] tracking-tight">
+        <button
+          onClick={() => navigate("/")}
+          className="text-[20px] font-semibold text-[#5b7ee5] tracking-tight"
+        >
           MyHeal
-        </span>
+        </button>
       </div>
 
       {/* Right actions */}
@@ -26,11 +31,11 @@ const TopHeader = () => {
             1
           </span>
         </button>
-        <button className="ml-1">
+        <button className="ml-1" onClick={() => navigate("/doctor")}>
           <img
             src={doctor.avatar}
             alt={doctor.name}
-            className="h-9 w-9 rounded-full object-cover ring-2 ring-slate-100"
+            className="h-9 w-9 rounded-full object-cover ring-2 ring-slate-100 hover:ring-[#5b7ee5] transition-all"
           />
         </button>
       </div>
