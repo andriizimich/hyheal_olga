@@ -41,10 +41,10 @@ const PatientSideMenu = () => {
         <div key={item.id} className="border-b border-slate-100">
           <button
             onClick={() => item.expandable && toggle(item.id)}
-            className={`w-full flex items-center justify-between px-3 py-3.5 text-[15px] transition ${
+            className={`w-full flex items-center justify-between px-3 py-2.5 text-[14px] transition ${
               item.active
                 ? "text-[#5b7ee5] bg-[#eef2fc] font-semibold"
-                : "text-slate-600 hover:bg-slate-50"
+                : "text-slate-600 hover:bg-white/70"
             }`}
           >
             {item.label}
@@ -58,7 +58,7 @@ const PatientSideMenu = () => {
             )}
           </button>
           {item.expandable && open[item.id] && (
-            <div className="bg-slate-50/60 pb-2">
+            <div className="bg-white/50 pb-2">
               {item.sub.map((s) => (
                 <button
                   key={s}
@@ -93,14 +93,7 @@ const PatientProfile = () => {
   return (
     <div className="flex min-h-full">
       {/* Left patient panel */}
-      <div className="w-[280px] shrink-0 bg-white border-r border-slate-100 p-4">
-        <button
-          onClick={() => navigate("/patients")}
-          className="flex items-center gap-2 text-[13px] font-medium text-slate-600 border border-slate-200 rounded-md px-3 py-2 hover:bg-slate-50 transition mb-5"
-        >
-          <ArrowLeft size={15} /> До мого кабінету
-        </button>
-
+      <div className="w-[280px] shrink-0 bg-[#f4f5f9] border-r border-slate-200 p-4">
         <h2 className="text-[18px] font-bold text-slate-800 leading-tight">{p.name}</h2>
         <p className="text-[15px] text-slate-500 mt-1">{p.phone}</p>
 
@@ -122,7 +115,7 @@ const PatientProfile = () => {
           </div>
         </div>
 
-        <button className="w-full flex items-center justify-center gap-2 border border-slate-200 rounded-md py-2.5 mt-5 text-[14px] font-medium text-slate-600 hover:bg-slate-50 transition">
+        <button className="w-full flex items-center justify-center gap-2 border border-slate-200 bg-white rounded-md py-2 mt-4 text-[14px] font-medium text-slate-600 hover:bg-slate-50 transition">
           <CalendarPlus size={16} className="text-[#5b7ee5]" /> Запланувати прийом
         </button>
 
@@ -130,7 +123,7 @@ const PatientProfile = () => {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 min-w-0 p-6">
+      <div className="flex-1 min-w-0 p-6 bg-white">
         {/* Header row */}
         <div className="flex flex-wrap items-start justify-between gap-6 mb-4">
           <h1 className="text-[24px] font-bold text-slate-800">Прийом пацієнта</h1>
@@ -153,7 +146,7 @@ const PatientProfile = () => {
         </div>
 
         {/* Template bar */}
-        <div className="flex items-center justify-between bg-white border border-slate-100 rounded-md px-4 py-3 mb-5">
+        <div className="flex items-center justify-between bg-slate-50 border border-slate-100 rounded-md px-4 py-3 mb-5">
           <div className="flex items-center gap-2 text-[14px] text-slate-500">
             <Info size={17} className="text-[#5b7ee5]" />
             Застосовано шаблон: R74 Гостра інфекція верхніх дихальних шляхів

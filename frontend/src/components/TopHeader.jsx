@@ -1,10 +1,12 @@
 import React from "react";
-import { Video, HelpCircle, Bell } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Video, HelpCircle, Bell, ArrowLeft } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { doctor } from "../mock";
 
 const TopHeader = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isPatient = location.pathname.startsWith("/patient/");
   return (
     <header className="h-16 bg-white border-b border-slate-100 flex items-center justify-between pr-6 shrink-0 relative z-20">
       {/* Logo */}
@@ -20,6 +22,14 @@ const TopHeader = () => {
           />
         </button>
       </div>
+      {isPatient && (
+        <button
+          onClick={() => navigate("/patients")}
+          className="flex items-center gap-2 text-[13px] font-medium text-slate-600 border border-slate-200 rounded-md px-3 py-2 hover:bg-slate-50 transition"
+        >
+          <ArrowLeft size={15} /> До мого кабінету
+        </button>
+      )}
       <div className="flex-1" />
 
       {/* Right actions */}
