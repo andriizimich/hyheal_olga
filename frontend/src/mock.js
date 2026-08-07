@@ -60,7 +60,7 @@ export const months = [
 // Doctor page left menu
 export const doctorMenu = [
   { id: "showcase", label: "Вітрина лікаря", icon: "Store", to: null },
-  { id: "timeline", label: "Таймлайн", icon: "Clock", to: "/", active: true },
+  { id: "timeline", label: "Таймлайн", icon: "Clock", to: "/", active: false },
   { id: "templates", label: "Шаблони медзаписів", icon: "FileText", to: null },
   { id: "forms", label: "Медичні форми", icon: "ClipboardList", to: null },
   { id: "services", label: "Послуги лікаря (iBoss)", icon: "Briefcase", to: null },
