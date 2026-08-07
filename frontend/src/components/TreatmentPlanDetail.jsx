@@ -9,7 +9,15 @@ import {
   Pill,
   ClipboardList,
   MoreVertical,
+  Pencil,
+  Trash2,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "./ui/dropdown-menu";
 
 const statusPill = (status) => {
   switch (status) {
@@ -129,7 +137,7 @@ const PlanDetail = () => {
       <div className="rounded-md border border-slate-100 overflow-hidden">
         <div
           className="grid gap-4 px-4 py-3 bg-slate-50 border-b border-slate-100 text-[13px] font-semibold text-slate-500"
-          style={{ gridTemplateColumns: "40px 56px minmax(0,1fr) 150px 110px 110px 50px" }}
+          style={{ gridTemplateColumns: "28px 52px minmax(0,1fr) 128px 100px 104px 40px" }}
         >
           <span></span>
           <span>Тип</span>
@@ -143,7 +151,7 @@ const PlanDetail = () => {
           <div
             key={i}
             className="grid gap-4 px-4 py-4 border-b border-slate-100 last:border-b-0 text-[14px] text-slate-600 items-center hover:bg-slate-50/60"
-            style={{ gridTemplateColumns: "40px 56px minmax(0,1fr) 150px 110px 110px 50px" }}
+            style={{ gridTemplateColumns: "28px 52px minmax(0,1fr) 128px 100px 104px 40px" }}
           >
             <button className="h-6 w-6 rounded border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-slate-100">
               <Plus size={14} />
@@ -168,9 +176,27 @@ const PlanDetail = () => {
               </span>
             </span>
             <span className="text-right">
-              <button className="h-8 w-8 rounded-md hover:bg-slate-100 flex items-center justify-center text-slate-400 ml-auto">
-                <MoreVertical size={16} />
-              </button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="h-8 w-8 rounded-md hover:bg-slate-100 flex items-center justify-center text-slate-400 ml-auto">
+                    <MoreVertical size={16} />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-40">
+                  <DropdownMenuItem
+                    onClick={() => toast("Змінити", { description: it.name })}
+                    className="cursor-pointer"
+                  >
+                    <Pencil size={15} className="mr-2 text-[#5b7ee5]" /> Змінити
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => toast("Видалити", { description: it.name })}
+                    className="cursor-pointer text-[#e85b5b] focus:text-[#e85b5b]"
+                  >
+                    <Trash2 size={15} className="mr-2" /> Видалити
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </span>
           </div>
         ))}
