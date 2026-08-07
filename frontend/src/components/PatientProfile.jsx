@@ -5,6 +5,7 @@ import { patientMenu, defaultPatientProfile } from "../mock";
 import { Checkbox } from "./ui/checkbox";
 import ProfileView from "./ProfileView";
 import DiseaseHistoryView from "./DiseaseHistoryView";
+import AppointmentHistoryView from "./AppointmentHistoryView";
 import {
   BadgeCheck,
   Mars,
@@ -205,7 +206,11 @@ const PatientProfile = () => {
 
   const renderMain = () => {
     if (section === "profile") return <ProfileView p={p} />;
-    if (section === "history") return <AppointmentView p={p} />;
+    if (section === "history")
+      return (
+        <AppointmentHistoryView p={p} onOpen={() => setSection("appointment-detail")} />
+      );
+    if (section === "appointment-detail") return <AppointmentView p={p} />;
     if (section === "disease-history") return <DiseaseHistoryView p={p} />;
     if (section.startsWith("sub-"))
       return <Placeholder title={section.slice(4)} />;
