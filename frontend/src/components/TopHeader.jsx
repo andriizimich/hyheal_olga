@@ -8,14 +8,19 @@ const TopHeader = () => {
   return (
     <header className="h-16 bg-white border-b border-slate-100 flex items-center justify-between pr-6 shrink-0 relative z-20">
       {/* Logo */}
-      <div className="pl-6">
+      <div className="w-[68px] flex items-center justify-center">
         <button
           onClick={() => navigate("/")}
-          className="text-[20px] font-semibold text-[#5b7ee5] tracking-tight"
+          className="flex items-center justify-center"
         >
-          MyHeal
+          <img
+            src="https://customer-assets-jt897jd0.emergentagent.net/job_crm-dashboard-ui-2/artifacts/3fs31ky3_Group%2033920.png"
+            alt="MyHeal"
+            className="h-9 w-9 object-contain"
+          />
         </button>
       </div>
+      <div className="flex-1" />
 
       {/* Right actions */}
       <div className="flex items-center gap-5">
