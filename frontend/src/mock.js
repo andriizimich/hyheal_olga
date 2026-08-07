@@ -75,9 +75,9 @@ export const doctorCode = "722bd799-9a85-40c0-a297-90ec132c7bdd";
 
 // Patient profile left menu
 export const patientMenu = [
-  { id: "profile", label: "Профіль", expandable: true, sub: ["Персональні дані", "Контакти", "Документи"] },
+  { id: "profile", label: "Профіль", expandable: false },
   { id: "relations", label: "Зв'язки", expandable: true, sub: ["Родичі", "Контактні особи"] },
-  { id: "history", label: "Історія прийомів", expandable: false, active: true },
+  { id: "history", label: "Історія прийомів", expandable: false },
   { id: "card", label: "Медична картка", expandable: true, sub: ["Діагнози", "Алергії", "Щеплення"] },
   { id: "documents", label: "Медичні документи", expandable: false },
   { id: "insurance", label: "Страхування", expandable: false },
